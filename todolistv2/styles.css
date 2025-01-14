@@ -42,8 +42,11 @@ h1 {
 .input-section {
   width: 100%;
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
   margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 #taskInput {
@@ -56,6 +59,8 @@ h1 {
   background: rgba(255, 255, 255, 0.1);
   color: white;
   transition: all 0.3s ease;
+  min-width: 100px; /* Définit une largeur minimale pour éviter que l'input ne devienne trop petit */
+  max-width: 100%; /* Limite la largeur maximale à 100% de son conteneur */
 }
 
 #taskInput:hover {
