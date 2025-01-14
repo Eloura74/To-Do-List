@@ -20,7 +20,8 @@ body {
     border-radius: 15px;
     box-shadow: 0px 10px 15px rgba(0, 0, 0, 0.3);
     padding: 20px 30px;
-    width: 400px;
+    width: 90%;
+    max-width: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -102,11 +103,8 @@ ul {
     transition: all 0.3s ease;
     position: relative;
     touch-action: pan-y pinch-zoom;
-}
-
-.task-item:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateX(20px);
+    overflow: hidden;
+    cursor: pointer;
 }
 
 .task-item.blurred {
@@ -116,19 +114,74 @@ ul {
     transition: all 0.3s ease;
 }
 
-.task-item.sliding {
-    transform: translateX(-100px);
+.task-item .task-text {
+    flex: 1;
+    margin-right: 10px;
 }
 
-.delete-indicator {
-    position: absolute;
-    right: -80px;
+.delete-btn {
+    background: transparent;
+    border: none;
     color: #ff6b6b;
-    font-size: 14px;
+    font-size: 1.2rem;
+    cursor: pointer;
     opacity: 0;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s ease;
+    padding: 5px 10px;
+    display: block;
 }
 
-.task-item.sliding .delete-indicator {
-    opacity: 1;
+/* Style desktop */
+@media (min-width: 768px) {
+    .task-item:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateX(20px);
+    }
+
+    .task-item:hover .delete-btn {
+        opacity: 1;
+    }
+
+    .delete-indicator {
+        display: none;
+    }
+}
+
+/* Style mobile */
+@media (max-width: 767px) {
+    .delete-btn {
+        display: none !important;
+    }
+    
+    .task-item.sliding {
+        transform: translateX(-100px);
+    }
+
+    .delete-indicator {
+        position: absolute;
+        right: -80px;
+        color: #ff6b6b;
+        font-size: 14px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+
+    .task-item.sliding .delete-indicator {
+        opacity: 1;
+    }
+}
+
+/* Ajustements responsive généraux */
+@media (max-width: 480px) {
+    .container {
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    #taskInput, button {
+        font-size: 0.9rem;
+    }
 }
